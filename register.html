@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Registration - DiaBeats Diabetes Care</title>
+    <meta name="description"
+        content="Join our network of healthcare professionals dedicated to improving diabetes care and patient outcomes">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="main.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <div class="auth-layout">
+        <!-- Left Sidebar with Welcome Message -->
+        <div class="auth-sidebar">
+            <div class="auth-sidebar-content">
+                <div class="logo">
+                    <i class="fas fa-heartbeat"></i>
+                    <h1>DiaBeats</h1>
+                </div>
+                <h2>Diabetes Care Platform for Doctors</h2>
+                <p>Join our network of healthcare professionals dedicated to improving diabetes care and patient
+                    outcomes.</p>
+                <div class="features">
+                    <div class="feature-item">
+                        <i class="fas fa-user-md"></i>
+                        <span>Specialized diabetes patient management</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Track glucose levels & treatment progress</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-pills"></i>
+                        <span>Medication & insulin tracking</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-notes-medical"></i>
+                        <span>Comprehensive patient records</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Registration Form -->
+        <div class="auth-main">
+            <div class="auth-card fade-in">
+                <div class="auth-card-header">
+                    <h2>Doctor Registration</h2>
+                    <p>Join DiaBeats to enhance your diabetes care practice</p>
+                </div>
+                <div class="auth-card-body">
+                    <form id="registrationForm">
+                        <!-- Progress Bar -->
+                        <div class="progress mb-4" style="height: 6px; background-color: #e9ecef; border-radius: 3px;">
+                            <div class="progress-bar" role="progressbar" style="width: 33%; background-color: #7ed957;"
+                                aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+
+                        <!-- Step 1: Personal Information -->
+                        <div class="form-step active" id="step1">
+                            <h5 class="mb-4"><i class="fas fa-user-circle me-2"></i>Personal Information</h5>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="firstName">First Name <span class="text-danger">*</span></label>
+                                        <div class="input-group">
+                                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                            <input type="text" class="form-control" id="firstName" name="firstName"
+                                                required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="lastName">Last Name <span class="text-danger">*</span></label>
+                                        <div class="input-group">
+                                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                            <input type="text" class="form-control" id="lastName" name="lastName"
+                                                required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address <span class="text-danger">*</span></label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-between mt-4">
+                                <!-- <button type="button" class="btn btn-outline-primary" disabled>Previous</button> -->
+                                <button type="button" class="btn btn-primary" onclick="nextStep(1)">Next <i
+                                        class="fas fa-arrow-right ms-2"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Professional Information -->
+                        <div class="form-step" id="step2">
+                            <h5 class="mb-4"><i class="fas fa-briefcase-medical me-2"></i>Professional Information</h5>
+                            <div class="form-group">
+                                <label for="specialization">Specialization <span class="text-danger">*</span></label>
+                                <select class="form-select" id="specialization" name="specialization" required>
+                                    <option value="" disabled selected>Select your specialization</option>
+                                    <option value="Cardiology">Cardiology</option>
+                                    <option value="Dermatology">Dermatology</option>
+                                    <option value="Endocrinology">Endocrinology</option>
+                                    <option value="Neurology">Neurology</option>
+                                    <option value="Pediatrics">Pediatrics</option>
+                                    <option value="Psychiatry">Psychiatry</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="licenseNumber">Medical License Number <span
+                                                class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="licenseNumber" name="licenseNumber"
+                                            required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="yearsExperience">Years of Experience</label>
+                                        <input type="number" class="form-control" id="yearsExperience"
+                                            name="yearsExperience" min="0" max="60">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="hospital">Hospital/Clinic Name <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="hospital" name="hospital" required>
+                            </div>
+                            <div class="d-flex justify-content-between mt-4">
+                                <button type="button" class="btn btn-outline-primary" onclick="prevStep(2)"><i
+                                        class="fas fa-arrow-left me-2"></i>Previous</button>
+                                <button type="button" class="btn btn-primary" onclick="nextStep(2)">Next <i
+                                        class="fas fa-arrow-right ms-2"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Account Setup -->
+                        <div class="form-step" id="step3">
+                            <h5 class="mb-4"><i class="fas fa-user-shield me-2"></i>Account Setup</h5>
+                            <div class="form-group">
+                                <label for="prefix">Title</label>
+                                <select class="form-select" id="prefix" required>
+                                    <option value="">Select Title</option>
+                                    <option value="Dr.">Dr.</option>
+                                    <option value="Prof. Dr.">Prof. Dr.</option>
+                                    <option value="Assoc. Prof. Dr.">Assoc. Prof. Dr.</option>
+                                    <option value="Asst. Prof. Dr.">Asst. Prof. Dr.</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="fullName">Full Name</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-user-md"></i></span>
+                                    <input type="text" class="form-control" id="fullName"
+                                        placeholder="Enter your full name" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="medicalLicense">Medical License Number</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                                    <input type="text" class="form-control" id="medicalLicense"
+                                        placeholder="Enter your medical license number" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="specialization">Specialization</label>
+                                <select class="form-select" id="specialization" required>
+                                    <option value="">Select your specialization</option>
+                                    <option value="Endocrinologist">Endocrinologist</option>
+                                    <option value="Diabetologist">Diabetologist</option>
+                                    <option value="Internal Medicine">Internal Medicine</option>
+                                    <option value="Family Medicine">Family Medicine</option>
+                                    <option value="Other">Other (please specify)</option>
+                                </select>
+                            </div>
+                            <div class="form-group" id="otherSpecializationGroup" style="display: none;">
+                                <label for="otherSpecialization">Please specify</label>
+                                <input type="text" class="form-control" id="otherSpecialization">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Professional Email</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                    <input type="email" class="form-control" id="email"
+                                        placeholder="your.name@hospital.com" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                    <input type="tel" class="form-control" id="phone" placeholder="+1 (___) ___-____">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Create Password</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                    <input type="password" class="form-control" id="password"
+                                        placeholder="Minimum 8 characters" required>
+                                    <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                                <div class="password-strength mt-2">
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 0%"></div>
+                                    </div>
+                                    <small class="password-strength-text">Password strength: <span>Weak</span></small>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmPassword">Confirm Password</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                    <input type="password" class="form-control" id="confirmPassword"
+                                        placeholder="Re-enter your password" required>
+                                </div>
+                            </div>
+                            <div class="invalid-feedback" id="passwordMatchError">
+                                Passwords do not match
+                            </div>
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="terms" required>
+                                    <label class="form-check-label" for="terms">
+                                        I certify that I am a licensed healthcare professional and agree to the
+                                        <a href="#" class="text-primary">Terms of Service</a> and
+                                        <a href="#" class="text-primary">Privacy Policy</a>
+                                    </label>
+                                    <div class="invalid-feedback">
+                                        You must agree to the terms and conditions
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-grid gap-3 mt-4">
+                                <button type="submit" class="btn btn-primary btn-lg py-3">
+                                    <i class="fas fa-user-md me-2"></i> Complete Registration
+                                </button>
+                                <div class="text-center mt-3">
+                                    <p class="text-muted mb-2">Already have an account?</p>
+                                    <a href="login.html" class="btn btn-outline-primary">
+                                        <i class="fas fa-sign-in-alt me-2"></i>Sign In
+                                    </a>
+                                </div>
+                                <div class="mt-4 text-center">
+                                    <p class="small text-muted">
+                                        <i class="fas fa-shield-alt me-1"></i> Your information is secured with 256-bit
+                                        encryption
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="auth-links mt-4">
+                        Already have an account? <a href="login.html" class="fw-bold">Sign in</a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-3">
+                <p class="text-muted small"> 2025 DiaBeats. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
